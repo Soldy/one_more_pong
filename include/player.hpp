@@ -15,15 +15,15 @@ class playerClass{
          if(0 > position_y){
               position_y =0;
          }
-         position_x = table.overX(
+         position_x = table->overX(
              size_x,
              position_x
          );
-         position_y = table.overY(
+         position_y = table->overY(
              size_y,
              position_y
          );
-     }
+     };
      void pressX(bool plus){
         press_x = true;
         if(plus == true){
@@ -32,7 +32,7 @@ class playerClass{
         }
         speed_x = default_speed_x * -1;
 
-     }
+     };
      void pressY(bool plus){
         press_y = true;
         if(plus == true){
@@ -40,15 +40,15 @@ class playerClass{
             return;
         }
         speed_y = default_speed_y * -1;
-     }
+     };
      void relaseX(){
         speed_x = 0;
         press_x = false;
-     }
+     };
      void relaseY(){
         speed_y = 0;
         press_y = false;
-     }
+     };
    private:
      int id;
      std::string name;
@@ -62,4 +62,6 @@ class playerClass{
      int size_y = 0;
      bool press_x = false;
      bool press_y = false;
-}
+};
+playerClass * playerOne = new playerClass();
+playerClass * playerTwo = new playerClass();

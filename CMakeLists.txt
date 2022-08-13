@@ -1,7 +1,16 @@
-project("one_more_pong"
-    VERSION 0.0.1
+project(one_more_pong
     DESCRIPTION ""
     HOMEPAGE_URL "https://github.com/Soldy/one_more_pong"
 )
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.18)
+add_compile_options(-pthread)
+set_property(GLOBAL PROPERTY CXX_STANDARD 20)
+add_library(pong_include INTERFACE)
+target_include_directories(pong_include INTERFACE include)
+target_include_directories(pong_include INTERFACE pthread)
+find_package(SDL2 REQUIRED)
+include_directories(SDL2Test ${SDL2_INCLUDE_DIRS})
+
 add_executable(pong main.cpp)
+target_link_libraries(pong PUBLIC pong_include ${SDL2_LIBRARIES})
+
