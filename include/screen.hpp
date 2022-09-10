@@ -1,4 +1,3 @@
-#include <SDL2/sdl.h>
 
 class screenClass{
   public:
@@ -12,15 +11,50 @@ class screenClass{
            this->y_res,
            SDL_WINDOW_SHOWN
         );
-        this->screen = SDL_GetWindowSurface( this->window );
-        SDL_FillRect(
-            this->screen,
-            NULL,
-            SDL_MapRGB(
-                this->screen->format, 0xFF, 0xFF, 0xFF 
-            ) 
+        this->render = SDL_CreateRenderer(
+            this->window,
+            -1,
+            0
         );
-        SDL_UpdateWindowSurface( this->window );
+        SDL_SetRenderDrawColor(
+            this->render,
+            0,
+            0,
+            0,
+            SDL_ALPHA_OPAQUE
+        );
+        SDL_RenderClear(this->render);
+        SDL_SetRenderDrawColor(
+            this->render,
+            255,
+            255,
+            255,
+            255
+        );
+
+        this->player.x = 10;
+        this->player.y = 10;
+        this->player.h = 200;
+        this->player.w = 20;
+        /*
+        SDL_RenderDrawRect(
+            this->render,
+            & this->player
+        );
+        */
+        SDL_RenderFillRect(
+            this->render,
+            & playerOne->rect
+        );
+        SDL_RenderFillRect(
+            this->render,
+            & playerTwo->rect
+        );
+        SDL_RenderFillRect(
+            this->render,
+            & ball->rect
+        );
+        SDL_RenderPresent(this->render);
     };
     void close(){
         SDL_DestroyWindow( this->window );
@@ -28,6 +62,8 @@ class screenClass{
   private:
     SDL_Window *window;
     SDL_Surface *screen;
+    SDL_Renderer * render;
+    SDL_Rect player;
     int x_res = 640;
     int y_res = 480;
 };

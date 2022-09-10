@@ -3,6 +3,13 @@
 
 class ballClass{
    public:
+     ballClass(){
+         this->rect.x = 200;
+         this->rect.y = 100;
+         this->rect.h = 20;
+         this->rect.w = 20;
+
+     };
      void update(){
          if(hit == true){
              hit = false;
@@ -26,6 +33,7 @@ class ballClass{
          }
          hit = true;
      };
+     SDL_Rect rect;
    private:
      int id;
      int position_x = 0;

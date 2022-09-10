@@ -10,7 +10,9 @@ target_include_directories(pong_include INTERFACE include)
 target_include_directories(pong_include INTERFACE pthread)
 find_package(SDL2 REQUIRED)
 include_directories(SDL2Test ${SDL2_INCLUDE_DIRS})
+find_package(Curses REQUIRED)
+include_directories(${CURSES_INCLUDE_DIR})
 
 add_executable(pong main.cpp)
-target_link_libraries(pong PUBLIC pong_include ${SDL2_LIBRARIES})
+target_link_libraries(pong PUBLIC pong_include ${SDL2_LIBRARIES} ${CURSES_LIBRARIES})
 
