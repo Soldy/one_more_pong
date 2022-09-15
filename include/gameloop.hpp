@@ -33,6 +33,7 @@ class GameClass {
                  this->run = false;
              }
              this->turn++;
+             this->screen->rendering();
         }
     };
     PlayerClass * playerOne = new PlayerClass();

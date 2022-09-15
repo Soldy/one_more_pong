@@ -29,7 +29,7 @@ class PlayerClass{
      int position_x = 0;
      int position_y = 0;
      int default_speed = 10;
-     int speed = 0;
+     int speed = 10;
      int size_x = 0;
      int size_y = 0;
 };
