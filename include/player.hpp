@@ -1,7 +1,7 @@
 #include <string>
 #include <cstdlib>
 
-class playerClass{
+class PlayerClass{
    public:
      void init(int x){
          this->rect.x = x;
@@ -33,5 +33,3 @@ class playerClass{
      int size_x = 0;
      int size_y = 0;
 };
-playerClass * playerOne = new playerClass();
-playerClass * playerTwo = new playerClass();

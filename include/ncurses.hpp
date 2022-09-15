@@ -1,8 +1,8 @@
 #include <ncurses.h>
 
-class ncursesClass{
+class NcursesClass{
   public:
-    ncursesClass(){
+    NcursesClass(){
         initscr();
         noecho();
         curs_set(0);
@@ -10,8 +10,15 @@ class ncursesClass{
         timeout(75);  
         start_color();
     };
-    ~ncursesClass(){
+    ~NcursesClass(){
         endwin();
+    };
+    void init(
+        PlayerClass * one,
+        PlayerClass * two
+    ){
+        this->playerOne = one;
+        this->playerTwo = two;
     };
     bool quit = false;
     bool watch(){
@@ -32,5 +39,7 @@ class ncursesClass{
     };
   private:
     int key;
+    PlayerClass * playerOne;
+    PlayerClass * playerTwo;
 };
 

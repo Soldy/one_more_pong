@@ -1,7 +1,12 @@
 
-class screenClass{
+class ScreenClass{
   public:
-    void init(){
+    void init(
+        PlayerClass * one,
+        PlayerClass * two
+    ){
+        this->playerOne = one;
+        this->playerTwo = two;
         SDL_Init(SDL_INIT_VIDEO);
         this->window = SDL_CreateWindow(
            "pong",
@@ -16,6 +21,8 @@ class screenClass{
             -1,
             0
         );
+    };
+    void rendering(){
         SDL_SetRenderDrawColor(
             this->render,
             0,
@@ -31,17 +38,6 @@ class screenClass{
             255,
             255
         );
-
-        this->player.x = 10;
-        this->player.y = 10;
-        this->player.h = 200;
-        this->player.w = 20;
-        /*
-        SDL_RenderDrawRect(
-            this->render,
-            & this->player
-        );
-        */
         SDL_RenderFillRect(
             this->render,
             & playerOne->rect
@@ -63,7 +59,8 @@ class screenClass{
     SDL_Window *window;
     SDL_Surface *screen;
     SDL_Renderer * render;
-    SDL_Rect player;
+    PlayerClass * playerOne;
+    PlayerClass * playerTwo;
     int x_res = 640;
     int y_res = 480;
 };
