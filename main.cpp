@@ -17,6 +17,11 @@
 int main(){
     GameClass * game = new GameClass();
     game->loop();
+    delete screen;
+    delete ncurses;
+    delete sdlKey;
+    delete playerOne;
+    delete playerTwo;
     delete game;
     return EXIT_SUCCESS;
 }

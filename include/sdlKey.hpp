@@ -2,13 +2,6 @@
 class SdlKeyClass {
   public:
     bool quit = false;
-    void init(
-        PlayerClass * one,
-        PlayerClass * two
-    ){
-        this->playerOne = one;
-        this->playerTwo = two;
-    };
     bool watch(){
         while (SDL_PollEvent(&this->events)){
             switch(this->events.type){
@@ -30,13 +23,15 @@ class SdlKeyClass {
                   default:
                     return false;
                 }
+              case SDL_KEYUP:
+                  playerOne->relase(); 
+                  return true;
             }
         }
         return false;
     };
   private:
     SDL_Event events;
-    PlayerClass * playerOne;
-    PlayerClass * playerTwo;
 };
+SdlKeyClass * sdlKey = new SdlKeyClass();
 

@@ -13,13 +13,6 @@ class NcursesClass{
     ~NcursesClass(){
         endwin();
     };
-    void init(
-        PlayerClass * one,
-        PlayerClass * two
-    ){
-        this->playerOne = one;
-        this->playerTwo = two;
-    };
     bool quit = false;
     bool watch(){
         this->key = getch();
@@ -39,7 +32,5 @@ class NcursesClass{
     };
   private:
     int key;
-    PlayerClass * playerOne;
-    PlayerClass * playerTwo;
 };
-
+NcursesClass * ncurses = new NcursesClass();

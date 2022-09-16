@@ -1,12 +1,7 @@
 
 class ScreenClass{
   public:
-    void init(
-        PlayerClass * one,
-        PlayerClass * two
-    ){
-        this->playerOne = one;
-        this->playerTwo = two;
+    void init(){
         SDL_Init(SDL_INIT_VIDEO);
         this->window = SDL_CreateWindow(
            "pong",
@@ -21,6 +16,14 @@ class ScreenClass{
             -1,
             0
         );
+        SDL_SetRenderDrawColor(
+            this->render,
+            0,
+            0,
+            0,
+            SDL_ALPHA_OPAQUE
+        );
+        SDL_RenderClear(this->render);
     };
     void rendering(){
         SDL_SetRenderDrawColor(
@@ -59,8 +62,7 @@ class ScreenClass{
     SDL_Window *window;
     SDL_Surface *screen;
     SDL_Renderer * render;
-    PlayerClass * playerOne;
-    PlayerClass * playerTwo;
     int x_res = 640;
     int y_res = 480;
 };
+ScreenClass * screen = new ScreenClass();
