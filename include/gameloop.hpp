@@ -8,6 +8,7 @@ class GameClass {
     };
     ~GameClass(){};
     void loop(){
+        screen->rendering();
         while(this->run){
             SDL_Delay(5);
             sdlKey->watch();

@@ -7,8 +7,8 @@ class PlayerClass{
          this->position_x = x;
          this->rect.x = x;
          this->rect.y = this->position_y;
-         this->rect.h = 100;
-         this->rect.w = 20;
+         this->rect.h = 80;
+         this->rect.w = 10;
 
      };
      void update(){

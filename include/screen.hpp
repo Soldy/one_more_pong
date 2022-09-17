@@ -3,7 +3,7 @@ class ScreenClass{
   public:
     void init(){
         SDL_Init(SDL_INIT_VIDEO);
-        this->window = SDL_CreateWindow(
+        cache.window = SDL_CreateWindow(
            "pong",
            this->x_res,
            this->y_res,
@@ -11,57 +11,62 @@ class ScreenClass{
            this->y_res,
            SDL_WINDOW_SHOWN
         );
-        this->render = SDL_CreateRenderer(
-            this->window,
+        cache.render = SDL_CreateRenderer(
+            cache.window,
             -1,
             0
         );
         SDL_SetRenderDrawColor(
-            this->render,
+            cache.render,
             0,
             0,
             0,
             SDL_ALPHA_OPAQUE
         );
-        SDL_RenderClear(this->render);
+        SDL_RenderClear(cache.render);
+       ball->load();
     };
     void rendering(){
         SDL_SetRenderDrawColor(
-            this->render,
+            cache.render,
             0,
             0,
             0,
             SDL_ALPHA_OPAQUE
         );
-        SDL_RenderClear(this->render);
+        SDL_RenderClear(cache.render);
+        SDL_RenderDrawRect(
+            cache.render,
+            & ball->rect
+        );
+        SDL_RenderCopy(
+            cache.render,
+            ball->image, 
+            nullptr,
+            &ball->rect
+        );
         SDL_SetRenderDrawColor(
-            this->render,
+            cache.render,
             255,
             255,
             255,
             255
         );
         SDL_RenderFillRect(
-            this->render,
+            cache.render,
             & playerOne->rect
         );
         SDL_RenderFillRect(
-            this->render,
+            cache.render,
             & playerTwo->rect
         );
-        SDL_RenderFillRect(
-            this->render,
-            & ball->rect
-        );
-        SDL_RenderPresent(this->render);
+
+        SDL_RenderPresent(cache.render);
     };
     void close(){
-        SDL_DestroyWindow( this->window );
+        SDL_DestroyWindow( cache.window );
     }
   private:
-    SDL_Window *window;
-    SDL_Surface *screen;
-    SDL_Renderer * render;
     int x_res = 640;
     int y_res = 480;
 };
