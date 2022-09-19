@@ -5,12 +5,15 @@ class ScreenClass{
         SDL_Init(SDL_INIT_VIDEO);
         cache.window = SDL_CreateWindow(
            "pong",
-           this->x_res,
-           this->y_res,
-           this->x_res,
-           this->y_res,
+           cache.result.x,
+           cache.result.y,
+           cache.result.x,
+           cache.result.y,
            SDL_WINDOW_SHOWN
         );
+        cache.full_screen = false;
+        SDL_SetWindowFullscreen(cache.window, !cache.full_screen);
+        SDL_ShowCursor(cache.full_screen);
         cache.render = SDL_CreateRenderer(
             cache.window,
             -1,
@@ -24,7 +27,7 @@ class ScreenClass{
             SDL_ALPHA_OPAQUE
         );
         SDL_RenderClear(cache.render);
-       ball->load();
+        ball->load();
     };
     void rendering(){
         SDL_SetRenderDrawColor(
@@ -67,7 +70,5 @@ class ScreenClass{
         SDL_DestroyWindow( cache.window );
     }
   private:
-    int x_res = 640;
-    int y_res = 480;
 };
 ScreenClass * screen = new ScreenClass();

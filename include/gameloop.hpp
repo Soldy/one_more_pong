@@ -3,7 +3,7 @@ class GameClass {
   public:
     GameClass(){
         playerOne->init(100);
-        playerTwo->init(540);
+        playerTwo->init(1820);
         screen->init();
     };
     ~GameClass(){};

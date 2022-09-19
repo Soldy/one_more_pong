@@ -15,27 +15,27 @@ class ballClass{
          SDL_QueryTexture(this->image, NULL, NULL, &this->rect.w, &this->rect.h);
      }
      void update(){
-         if(hit == true){
-             hit = false;
+         if(this->hit == true){
+             this->hit = false;
              return ;
          }
-         position_x = position_x+speed_x;
-         position_y = position_y+speed_y;
+         this->position.x = this->position.x+this->speed.x;
+         this->position.y = this->position.y+this->speed.y;
      };
      void collusion(bool x, bool y){
          if(x > -1){
-             position_x = (position_x+(speed_x-x) * -1);
-             speed_y * -1;
+             this->position.x = (this->position.x+(this->speed.x-x) * -1);
+             this->speed.y *= -1;
          }else{
-             position_x = position_x+speed_x;
+             this->position.x = this->position.x+this->speed.x;
          }
          if(y > -1){
-             position_y = (position_y+(speed_y-y) * -1);
-             speed_y * -1;
+             this->position.y = (this->position.y+(this->speed.y-y) * -1);
+             this->speed.y * -1;
          }else{
-             position_y = position_y+speed_y;
+             this->position.y = this->position.y+this->speed.y;
          }
-         hit = true;
+         this->hit = true;
      };
      SDL_Rect rect;
      SDL_Texture *image;
@@ -44,10 +44,14 @@ class ballClass{
        "<svg height='10' width='10'><filter id='blur'><feGaussianBlur stdDeviation='5' /></filter><circle cx='5' cy='5' r='4' stroke='white' stroke-width='1' fill='white' filter='url(#blur)' /></svg>";
      SDL_RWops *rw;
      int id;
-     int position_x = 0;
-     int position_y = 0;
-     int speed_x = 0;
-     int speed_y = 0;
+     struct { 
+         int x = 1;
+         int y = 1;
+     } position ;
+     struct { 
+         int x = 1;
+         int y = 1;
+     } speed ;
      bool hit = false;
 };
 

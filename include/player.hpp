@@ -4,31 +4,31 @@
 class PlayerClass{
    public:
      void init(int x){
-         this->position_x = x;
+         this->position.x = x;
          this->rect.x = x;
-         this->rect.y = this->position_y;
-         this->rect.h = 80;
-         this->rect.w = 10;
-
+         this->rect.y = this->position.y;
+         this->rect.w = this->size.x;
+         this->rect.h = this->size.y;
+         this->max.y = cache.result.y - this->size.y;
      };
      void update(){
         if(1 > this->round)
            return ;
         this->round--;
-        this->position_y = this->position_y + this->speed;
-         if(0 > this->position_y)
-            this->position_y = 0;
-         if(this->position_y > 400)
-            this->position_y = 400;
-         this->rect.y = this->position_y;
+        this->position.y = this->position.y + this->speed.y;
+         if(0 > this->position.y)
+            this->position.y = 0;
+         if(this->position.y > this->max.y)
+            this->position.y = this->max.y;
+         this->rect.y = this->position.y;
      };
      void pressUp(){
         this->round=100;
-        this->speed=this->default_speed*-1;
+        this->speed.y=this->default_speed.y*-1;
      };
      void pressDown(){
         this->round=100;
-        this->speed=this->default_speed*1;
+        this->speed.y=this->default_speed.y*1;
      };
      void relase(){
         this->round=0;
@@ -38,12 +38,26 @@ class PlayerClass{
      int id;
      int round = 0;
      std::string name;
-     int position_x = 0;
-     int position_y = 0;
-     int default_speed = 1;
-     int speed = 1;
-     int size_x = 20;
-     int size_y = 100;
+     struct { 
+         int x = 1;
+         int y = 1;
+     } position ;
+     struct { 
+         int x = 1;
+         int y = 1;
+     } default_speed ;
+     struct { 
+         int x = 1;
+         int y = 1;
+     } speed ;
+     struct {
+         int x = 10;
+         int y = 80;
+     } size;
+     struct {
+         int x = 400;
+         int y = 400;
+    } max;
 
 };
 PlayerClass * playerOne = new PlayerClass();
