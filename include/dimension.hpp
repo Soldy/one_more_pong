@@ -1,15 +1,16 @@
 
+struct twod {
+    int x;
+    int y;
+}
 
-class dimensionClass{
-  public:
-    void resize(){
-        
-    }
-
-  private:
-    int result_x = 1920;
-    int result_y = 1080;
-    int screen_x = 640;
-    int screen_y = 480;
+struct Dimension{
+    twod position;
+    twod acceleration;
+    twod acceleration_max;
+    twod speed;
+    twod speed_max;
+    twod speed_default;
+    twod size;
 }
 
