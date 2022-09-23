@@ -23,11 +23,11 @@ class PlayerClass{
          this->rect.y = this->position.y;
      };
      void pressUp(){
-        this->round=100;
+        this->round=1000;
         this->speed.y=this->default_speed.y*-1;
      };
      void pressDown(){
-        this->round=100;
+        this->round=1000;
         this->speed.y=this->default_speed.y*1;
      };
      void relase(){
@@ -43,12 +43,12 @@ class PlayerClass{
          int y = 1;
      } position ;
      struct { 
-         int x = 1;
-         int y = 1;
+         int x = 10;
+         int y = 10;
      } default_speed ;
      struct { 
-         int x = 1;
-         int y = 1;
+         int x = 5;
+         int y = 5;
      } speed ;
      struct {
          int x = 10;

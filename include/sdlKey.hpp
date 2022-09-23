@@ -12,11 +12,18 @@ class SdlKeyClass {
                   case SDLK_RIGHT:
                     return true;
                   case SDLK_UP:
-                    playerOne->pressUp(); 
+                    playerTwo->pressUp(); 
                     return true;
                   case SDLK_DOWN:
+                    playerTwo->pressDown(); 
+                    return true;
+                  case SDLK_w:
+                    playerOne->pressUp(); 
+                    return true;
+                  case SDLK_s:
                     playerOne->pressDown(); 
                     return true;
+
                   case SDLK_ESCAPE:
                     this->quit = true;
                     return true;
@@ -24,8 +31,26 @@ class SdlKeyClass {
                     return false;
                 }
               case SDL_KEYUP:
-                  playerOne->relase(); 
-                  return true;
+                switch(this->events.key.keysym.sym){
+                  case SDLK_LEFT:
+                    playerTwo->relase(); 
+                    return true;
+                  case SDLK_RIGHT:
+                    playerTwo->relase(); 
+                    return true;
+                  case SDLK_UP:
+                    playerTwo->relase(); 
+                    return true;
+                  case SDLK_DOWN:
+                    playerTwo->relase(); 
+                    return true;
+                  case SDLK_w:
+                    playerOne->relase(); 
+                    return true;
+                  case SDLK_s:
+                    playerOne->relase(); 
+                    return true;
+                }
             }
         }
         return false;
