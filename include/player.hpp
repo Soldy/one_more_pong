@@ -4,31 +4,32 @@
 class PlayerClass{
    public:
      void init(int x){
-         this->position.x = x;
+         this->d.position.x = x;
+         this->d.speed_default.y=5;
          this->rect.x = x;
-         this->rect.y = this->position.y;
-         this->rect.w = this->size.x;
-         this->rect.h = this->size.y;
-         this->max.y = cache.result.y - this->size.y;
+         this->rect.y = this->d.position.y;
+         this->rect.w = this->d.size.x;
+         this->rect.h = this->d.size.y;
+         this->d.max.y = cache.result.y - this->d.size.y;
      };
      void update(){
         if(1 > this->round)
            return ;
         this->round--;
-        this->position.y = this->position.y + this->speed.y;
-         if(0 > this->position.y)
-            this->position.y = 0;
-         if(this->position.y > this->max.y)
-            this->position.y = this->max.y;
-         this->rect.y = this->position.y;
+        this->d.position.y = this->d.position.y + this->d.speed.y;
+         if(0 > this->d.position.y)
+            this->d.position.y = 0;
+         if(this->d.position.y > this->d.max.y)
+            this->d.position.y = this->d.max.y;
+         this->rect.y = this->d.position.y;
      };
      void pressUp(){
         this->round=1000;
-        this->speed.y=this->default_speed.y*-1;
+        this->d.speed.y=this->d.speed_default.y*-1;
      };
      void pressDown(){
         this->round=1000;
-        this->speed.y=this->default_speed.y*1;
+        this->d.speed.y=this->d.speed_default.y*1;
      };
      void relase(){
         this->round=0;
@@ -38,27 +39,7 @@ class PlayerClass{
      int id;
      int round = 0;
      std::string name;
-     struct { 
-         int x = 1;
-         int y = 1;
-     } position ;
-     struct { 
-         int x = 10;
-         int y = 10;
-     } default_speed ;
-     struct { 
-         int x = 5;
-         int y = 5;
-     } speed ;
-     struct {
-         int x = 10;
-         int y = 80;
-     } size;
-     struct {
-         int x = 400;
-         int y = 400;
-    } max;
-
+     Dimension d;
 };
 PlayerClass * playerOne = new PlayerClass();
 PlayerClass * playerTwo = new PlayerClass();

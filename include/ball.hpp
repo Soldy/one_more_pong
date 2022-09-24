@@ -19,21 +19,21 @@ class ballClass{
              this->hit = false;
              return ;
          }
-         this->position.x = this->position.x+this->speed.x;
-         this->position.y = this->position.y+this->speed.y;
+         this->d.position.x = this->d.position.x+this->d.speed.x;
+         this->d.position.y = this->d.position.y+this->d.speed.y;
      };
      void collusion(bool x, bool y){
          if(x > -1){
-             this->position.x = (this->position.x+(this->speed.x-x) * -1);
-             this->speed.y *= -1;
+             this->d.position.x = (this->d.position.x+(this->d.speed.x-x) * -1);
+             this->d.speed.y *= -1;
          }else{
-             this->position.x = this->position.x+this->speed.x;
+             this->d.position.x = this->d.position.x+this->d.speed.x;
          }
          if(y > -1){
-             this->position.y = (this->position.y+(this->speed.y-y) * -1);
-             this->speed.y * -1;
+             this->d.position.y = (this->d.position.y+(this->d.speed.y-y) * -1);
+             this->d.speed.y * -1;
          }else{
-             this->position.y = this->position.y+this->speed.y;
+             this->d.position.y = this->d.position.y+this->d.speed.y;
          }
          this->hit = true;
      };
@@ -44,15 +44,8 @@ class ballClass{
        "<svg height='10' width='10'><filter id='blur'><feGaussianBlur stdDeviation='5' /></filter><circle cx='5' cy='5' r='4' stroke='white' stroke-width='1' fill='white' filter='url(#blur)' /></svg>";
      SDL_RWops *rw;
      int id;
-     struct { 
-         int x = 1;
-         int y = 1;
-     } position ;
-     struct { 
-         int x = 1;
-         int y = 1;
-     } speed ;
      bool hit = false;
+     Dimension d;
 };
 
 ballClass * ball = new ballClass();

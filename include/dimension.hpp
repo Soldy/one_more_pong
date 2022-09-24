@@ -2,7 +2,7 @@
 struct twod {
     int x;
     int y;
-}
+};
 
 struct Dimension{
     twod position;
@@ -12,5 +12,6 @@ struct Dimension{
     twod speed_max;
     twod speed_default;
     twod size;
-}
+    twod max;
+};
 
