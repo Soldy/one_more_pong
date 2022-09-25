@@ -1,9 +1,8 @@
 struct {
     SDL_Renderer * render;
     SDL_Window *window;
+    SDL_DisplayMode display_mode;
     bool full_screen;
-    struct {
-        int x = 1920;
-        int y = 1080;
-    } result;
+    TwoD result;
+    TwoD screen_size;
 } cache;

@@ -2,8 +2,8 @@
 class GameClass {
   public:
     GameClass(){
-        playerOne->init(100);
-        playerTwo->init(1820);
+        players.one->init(100);
+        players.two->init(1820);
         screen->init();
     };
     ~GameClass(){};
@@ -15,8 +15,8 @@ class GameClass {
             if(sdlKey->quit == true )
                 this->run = false;
             this->turn++;
-            playerOne->update();
-            playerTwo->update();
+            players.one->update();
+            players.two->update();
             screen->rendering();
         }
     };

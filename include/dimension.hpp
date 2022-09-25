@@ -1,17 +1,17 @@
 
-struct twod {
+struct TwoD {
     int x;
     int y;
 };
 
 struct Dimension{
-    twod position;
-    twod acceleration;
-    twod acceleration_max;
-    twod speed;
-    twod speed_max;
-    twod speed_default;
-    twod size;
-    twod max;
+   TwoD position;
+   TwoD acceleration;
+   TwoD acceleration_max;
+   TwoD speed;
+   TwoD speed_max;
+   TwoD speed_default;
+   TwoD size;
+   TwoD max;
 };
 

@@ -4,6 +4,7 @@
 #include <thread>
 #include "SDL.h"
 #include "SDL_image.h"
+#include "include/dimension.hpp"
 #include "include/cache.hpp"
 #include "include/table.hpp"
 #include "include/ball.hpp"
@@ -20,8 +21,8 @@ int main(){
     game->loop();
     delete screen;
     delete sdlKey;
-    delete playerOne;
-    delete playerTwo;
+    delete players.one;
+    delete players.two;
     delete game;
     return EXIT_SUCCESS;
 }

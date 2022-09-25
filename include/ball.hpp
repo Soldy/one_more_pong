@@ -37,6 +37,18 @@ class ballClass{
          }
          this->hit = true;
      };
+     void render(){
+        SDL_RenderDrawRect(
+            cache.render,
+            & this->rect
+        );
+        SDL_RenderCopy(
+            cache.render,
+            this->image, 
+            nullptr,
+            &this->rect
+        );
+     };
      SDL_Rect rect;
      SDL_Texture *image;
    private:
