@@ -11,7 +11,8 @@ class ScreenClass{
     };
     void rendering(){
         this->setBlack();
-        SDL_RenderClear(cache.render);
+        players.one->clear();
+        players.two->clear();
         ball->render();
         SDL_SetRenderDrawColor(
             cache.render,
