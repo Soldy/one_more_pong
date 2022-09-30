@@ -1,8 +1,11 @@
-#include <string>
 #include <cstdlib>
 #include <iostream>
 
 class PlayerClass{
+   private:
+     bool pressed = false;
+     SDL_Rect rect;
+     Dimension d;
    public:
      void init(int x){
          this->d.position.x = x;
@@ -24,7 +27,6 @@ class PlayerClass{
             this->d.position.y = 0;
          else if(this->d.position.y > this->d.max.y)
             this->d.position.y = this->d.max.y;
-         this->rect.y = this->d.position.y;
      };
      void pressUp(){
         this->pressed = true;
@@ -37,17 +39,21 @@ class PlayerClass{
      void relase(){
         this->pressed=false;
      };
-     void render(){
+     void clear(){
         SDL_RenderFillRect(
             cache.render,
             & this->rect
         );
      };
-   private:
-     bool pressed = false;
-     SDL_Rect rect;
-     std::string name;
-     Dimension d;
+     void render(){
+        this->rect.y = this->d.position.y;
+        SDL_RenderFillRect(
+            cache.render,
+            & this->rect
+        );
+     };
+     ~PlayerClass(){
+     };
 };
 
 struct {
