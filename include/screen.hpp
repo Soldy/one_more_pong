@@ -11,8 +11,13 @@ class ScreenClass{
     };
     void rendering(){
         this->setBlack();
-        players.one->clear();
-        players.two->clear();
+        if(this->update_round > this->update_rate){
+            this->update_round = 0;
+            SDL_RenderClear(cache.render);
+        }else{
+            players.one->clear();
+            players.two->clear();
+        }
         ball->render();
         SDL_SetRenderDrawColor(
             cache.render,
@@ -24,11 +29,14 @@ class ScreenClass{
         players.one->render();
         players.two->render();
         SDL_RenderPresent(cache.render);
+        this->update_round++;
     };
     void close(){
         SDL_DestroyWindow( cache.window );
     }
   private:
+    int update_round = 0;
+    int update_rate = 20;
     void checkSize(){
         SDL_GetCurrentDisplayMode(
             0, 

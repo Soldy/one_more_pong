@@ -1,3 +1,5 @@
+
+
 struct {
     SDL_Renderer * render;
     SDL_Window *window;

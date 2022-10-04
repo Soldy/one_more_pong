@@ -2,8 +2,8 @@
 #include <vector>
 #include <chrono>
 #include <thread>
-#include "SDL.h"
-#include "SDL_image.h"
+#include <SDL2/SDL.h>  
+#include "SDL2/SDL_image.h"
 #include "include/dimension.hpp"
 #include "include/cache.hpp"
 #include "include/table.hpp"
