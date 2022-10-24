@@ -63,7 +63,7 @@ class ScreenClass{
         cache.render = SDL_CreateRenderer(
             cache.window,
             -1,
-            0
+            SDL_RENDERER_ACCELERATED
         );
         this->setBlack();
         SDL_RenderClear(cache.render);
