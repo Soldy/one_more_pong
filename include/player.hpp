@@ -38,6 +38,7 @@ class PlayerClass{
      };
      void relase(){
         this->pressed=false;
+        this->d.speed.y=0;
      };
      void clear(){
         SDL_RenderFillRect(
@@ -52,6 +53,28 @@ class PlayerClass{
             & this->rect
         );
      };
+     bool checkX(int last, int current){
+         int left = this->d.size.x + this->d.position.x;
+         if(
+           (
+              ( last > left )&&
+              ( left > current )
+            )||(
+              ( this->d.position.x > last )&&
+              ( current > this->d.position.x )
+            )
+         )
+             return true;
+         return false;
+     }
+     int checkY(int current){
+         if(
+           (current > this->d.position.y)&&
+           (this-d.position.y+this->d.size.y > current)
+        )
+           return true;
+        return false;
+     }
      ~PlayerClass(){
      };
 };

@@ -1,4 +1,6 @@
 #include <string>
+#include <cstdlib> 
+#include <ctime> 
 #include <cstdlib>
 
 class ballClass{
@@ -9,16 +11,21 @@ class ballClass{
          this->rect.h = 10;
          this->rect.w = 10;
      };
+     int getX(){
+         return this->d.position.x;
+     }
+     int getY(){
+         return this->d.position.y;
+     }
+     void start (){
+         this->d.speed.x = 5-(10*(rand()%2));
+     }
      void load (){
          this->rw = SDL_RWFromConstMem(this->svg.c_str(), this->svg.size());
          this->image = IMG_LoadTexture_RW(cache.render, this->rw, 1);
          SDL_QueryTexture(this->image, NULL, NULL, &this->rect.w, &this->rect.h);
      }
      void update(){
-         if(this->hit == true){
-             this->hit = false;
-             return ;
-         }
          this->d.position.x = this->d.position.x+this->d.speed.x;
          this->d.position.y = this->d.position.y+this->d.speed.y;
      };
