@@ -47,7 +47,8 @@ class PlayerClass{
         );
      };
      void render(){
-        this->rect.y = this->d.position.y;
+        this->rect.x = result.x(this->d.position.x);
+        this->rect.y = result.y(this->d.position.y);
         SDL_RenderFillRect(
             cache.render,
             & this->rect
@@ -70,7 +71,7 @@ class PlayerClass{
      int checkY(int current){
          if(
            (current > this->d.position.y)&&
-           (this-d.position.y+this->d.size.y > current)
+           (this->d.position.y+this->d.size.y > current)
         )
            return true;
         return false;

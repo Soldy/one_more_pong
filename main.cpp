@@ -8,6 +8,7 @@
 #include "SDL2/SDL_ttf.h"
 #include "include/dimension.hpp"
 #include "include/cache.hpp"
+#include "include/result.hpp"
 #include "include/table.hpp"
 #include "include/ball.hpp"
 #include "include/player.hpp"

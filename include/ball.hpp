@@ -6,16 +6,16 @@
 class ballClass{
    public:
      ballClass(){
-         this->rect.x = 200;
-         this->rect.y = 100;
+         this->d.position.x =200;
+         this->d.position.y =100;
          this->rect.h = 10;
          this->rect.w = 10;
      };
      int getX(){
-         return this->d.position.x;
+         return result.x(this->d.position.x);
      }
      int getY(){
-         return this->d.position.y;
+         return result.y(this->d.position.y);
      }
      void start (){
          this->d.speed.x = 5-(10*(rand()%2));
@@ -26,8 +26,12 @@ class ballClass{
          SDL_QueryTexture(this->image, NULL, NULL, &this->rect.w, &this->rect.h);
      }
      void update(){
-         this->d.position.x = this->d.position.x+this->d.speed.x;
-         this->d.position.y = this->d.position.y+this->d.speed.y;
+         this->d.position.x = (
+           this->d.position.x+this->d.speed.x
+         );
+         this->d.position.y = (
+           this->d.position.y+this->d.speed.y
+         );
      };
      void collusion(bool x, bool y){
          if(x > -1){
@@ -45,6 +49,8 @@ class ballClass{
          this->hit = true;
      };
      void render(){
+        this->rect.x = this->getX();
+        this->rect.y = this->getY();
         SDL_RenderDrawRect(
             cache.render,
             & this->rect

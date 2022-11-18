@@ -3,6 +3,9 @@ class ScreenClass{
     void init(){
         cache.result.x=1920;
         cache.result.y=1080;
+        cache.screen_size.x=1920;
+        cache.screen_size.y=1080;
+        result.change();
         SDL_Init(SDL_INIT_VIDEO);
         this->checkSize();
         this->createWindow();

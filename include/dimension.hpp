@@ -1,4 +1,9 @@
 
+struct TwoDX {
+    float x;
+    float y;
+};
+
 struct TwoD {
     int x;
     int y;
