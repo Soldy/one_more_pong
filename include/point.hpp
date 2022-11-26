@@ -5,9 +5,9 @@
 
 class pointClass{
   public:
-    void init(){ // do not change to constructor yet.
+    void init(int x){ // do not change to constructor yet.
         this->Retrrg = TTF_OpenFont("assets/retrrg.ttf", 24); 
-        this->rect.x = 456; 
+        this->rect.x = x; 
         this->rect.y = 20;
         this->rect.w = 24;
         this->rect.h = 24;
@@ -15,6 +15,18 @@ class pointClass{
     void clear(){
         SDL_FreeSurface(this->surfaceMessage);
         SDL_DestroyTexture(this->Message);
+    };
+    void reset(){
+        this->point = 0;
+    };
+    void set(int p){
+        this->point = p;
+    };
+    void add(int p){
+        this->point = this->point + p;
+    };
+    int get(){
+        return this->point;
     };
     void render(){
         if (this->Retrrg == NULL) {
@@ -37,7 +49,6 @@ class pointClass{
             &this->rect
         );
     };
-    
   private:
     TTF_Font* Retrrg ; 
     SDL_Color White = {255, 255, 255};
@@ -45,7 +56,7 @@ class pointClass{
     SDL_Texture* Message;
     SDL_Rect rect;
     Dimension d;
+    int point;
 };
 
-pointClass *pointText = new pointClass();
 
