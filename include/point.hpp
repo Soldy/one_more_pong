@@ -3,14 +3,14 @@
 #include <ctime> 
 #include <cstdlib>
 
-class pointClass{
+class PointClass{
   public:
     void init(int x){ // do not change to constructor yet.
         this->Retrrg = TTF_OpenFont("assets/retrrg.ttf", 24); 
-        this->d.position.x = x; 
         this->d.position.y = 20;
         this->d.size.x = 24;
         this->d.size.y = 24;
+        this->d.position.x = x - ( this->d.size.x /2 ); 
     };
     void clear(){
         SDL_FreeSurface(this->surfaceMessage);
@@ -32,7 +32,7 @@ class pointClass{
         this->rect.x = result.x(this->d.position.x); 
         this->rect.y = result.y(this->d.position.y); 
         this->rect.w = result.x(this->d.size.x); 
-        this->rect.h = result.y(this->d.size.xy); 
+        this->rect.h = result.y(this->d.size.y); 
         if (this->Retrrg == NULL) {
             std::cout << TTF_GetError() << std::endl;
             exit(EXIT_FAILURE);
@@ -46,12 +46,14 @@ class pointClass{
             cache.render,
             this->surfaceMessage
         );
+
         SDL_RenderCopy(
             cache.render, 
             this->Message,
             nullptr, 
             &this->rect
         );
+
     };
   private:
     TTF_Font* Retrrg ; 
@@ -61,7 +63,6 @@ class pointClass{
     SDL_Rect rect;
     Dimension d;
     int point;
-    Dimension d;
 };
 
 

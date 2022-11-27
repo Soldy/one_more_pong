@@ -11,6 +11,7 @@
 #include "include/result.hpp"
 #include "include/table.hpp"
 #include "include/ball.hpp"
+#include "include/point.hpp"
 #include "include/player.hpp"
 #include "include/screen.hpp"
 #include "include/sdlKey.hpp"

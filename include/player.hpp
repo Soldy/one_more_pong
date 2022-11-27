@@ -6,18 +6,17 @@ class PlayerClass{
      bool pressed = false;
      SDL_Rect rect;
      Dimension d;
+     PointClass * point;
    public:
-     void init(int x){
+     void init(int x, int point_x){
          this->d.position.x = x;
          this->d.position.y = 0;
          this->d.speed_default.y=5;
          this->d.size.x=10;
          this->d.size.y=50;
-         this->rect.x = x;
-         this->rect.y = this->d.position.y;
-         this->rect.w = this->d.size.x;
-         this->rect.h = this->d.size.y;
          this->d.max.y = 1080 - this->d.size.y;
+         this->point = new PointClass();
+         this->point->init(point_x);
      };
      void update(){
         if(this->pressed == false)
@@ -49,10 +48,13 @@ class PlayerClass{
      void render(){
         this->rect.x = result.x(this->d.position.x);
         this->rect.y = result.y(this->d.position.y);
+        this->rect.w = result.x(this->d.size.x);
+        this->rect.h = result.y(this->d.size.y);
         SDL_RenderFillRect(
             cache.render,
             & this->rect
         );
+        this->point->render();
      };
      bool checkX(int last, int current){
          int left = this->d.size.x + this->d.position.x;

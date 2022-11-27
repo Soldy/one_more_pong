@@ -6,7 +6,6 @@ class ScreenClass{
         cache.screen_size.x=1920;
         cache.screen_size.y=1080;
         result.change();
-        SDL_Init(SDL_INIT_VIDEO);
         this->checkSize();
         this->createWindow();
         this->createRender();
