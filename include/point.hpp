@@ -6,7 +6,7 @@
 class PointClass{
   public:
     void init(int x){ // do not change to constructor yet.
-        this->Retrrg = TTF_OpenFont("assets/retrrg.ttf", 24); 
+        this->Retrrg = TTF_OpenFont("assets/college.ttf", 24); 
         this->d.position.y = 20;
         this->d.size.x = 24;
         this->d.size.y = 24;
@@ -29,7 +29,7 @@ class PointClass{
         return this->point;
     };
     void render(){
-        this->update();
+//        this->update();
         this->rect.x = result.x(this->d.position.x); 
         this->rect.y = result.y(this->d.position.y); 
         this->rect.w = result.x(this->d.size.x); 
@@ -40,7 +40,7 @@ class PointClass{
         }
         this->surfaceMessage = TTF_RenderText_Solid(
             this->Retrrg,
-            this->stm.str().c_str(),
+            std::to_string(this->point).c_str(),
             this->White
         );
         this->Message = SDL_CreateTextureFromSurface(
@@ -63,12 +63,7 @@ class PointClass{
     SDL_Texture* Message;
     SDL_Rect rect;
     Dimension d;
-    int point = 0;
-    char* point_char;
-    std::stringstream stm;
-    void update(){
-      this->stm << this->point;
-   }
+    int point = 2;
 };
 
 
